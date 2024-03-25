@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => res.send(`Server running on port ${PORT}`));
+app.get('/photo/:photo', (req, res) => res.sendFile(__dirname + '/uploads/' + req.params.photo));
 
 
 dbConfig.connectToDB().then((db) => {

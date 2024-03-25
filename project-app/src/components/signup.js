@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { CustomNavigate } from '../util/navigate';
 
 export default class SignUp extends Component {
-    constructor(props) {
+        constructor(props) {
         super(props);
         this.state = {
             email: '',
@@ -29,13 +28,17 @@ export default class SignUp extends Component {
                 body: JSON.stringify({ email, password, firstName, lastName })
             });
             const data = await response.json();
-            console.log(data);
             if (data.status === 'failed') {
                 errorMessage = data.message
             } else {
                 errorMessage = ''
                 toast.success('User registered successfully');
-                CustomNavigate('/login');
+                //clear the form
+                this.setState({ email: '', password: '', firstName: '', lastName: '' });
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('firstName').value = '';
+                document.getElementById('lastName').value = '';
             }
         } catch (err) {
             console.error(err);
@@ -54,7 +57,7 @@ export default class SignUp extends Component {
         let { errorMessage } = this.state;
         return (
             <>
-            {/* <ToastContainer /> */}
+            <ToastContainer />
             <div className="auth-inner">
                 <form onSubmit={this.handleSubmit}>
                     <h3>Sign Up</h3>

@@ -1,78 +1,54 @@
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/login';
 import SignUp from './components/signup';
 import Dashboard from './components/dashboard';
-import { PrivateRoutes } from './components/authProvider';
-import React, { useContext, useRef, useState } from 'react';
-import { ToastContainer, toast } from "react-toastify";
+import { PrivateRoutes } from './util/authProvider';
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from './components/authProvider';
+import { Navbar } from './components/navbar';
+import { AuthContext } from './util/authProvider';
+import { useState } from 'react';
+import Portfolio from './components/Portfolio';
+import RequestManage from './components/requests';
+import UserManage from './components/users';
+import PaymentHistory from './components/payments';
+import Feedback from './components/feedback';
+import EditUser from './components/edituser';
+
+
 function App() {
-  const [isLoggedIn, logout] = useContext(AuthContext);
-  const handleLogout = () => {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
-    toast.success('Logged out successfully');
-  }
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+
   return (
-    <><div>
-       <ToastContainer/>
-    </div>
-    <Router>
-      <div className="App" >
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={'/login'}>
-              {/* rename it later */}
-              My App
-            </Link>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav ml-auto">
-                {!isLoggedIn && <li className="nav-item">
-                  <Link className="nav-link" to={'/login'}>
-                    Login
-                  </Link>
-                </li>}
-                {!isLoggedIn && <li className="nav-item">
-                  <Link className="nav-link" to={'/sign-up'}>
-                    Sign up
-                  </Link>
-                </li>}
-
-                {isLoggedIn && <li className="nav-item">
-                  <Link className="nav-link" to={'/dashboard'}>
-                    Dashboard
-                  </Link>
-                </li>}
-                {/* show logout at the right side */}
-                {isLoggedIn && <li className="nav-item">
-                  <Link className="nav-link ml-75" to={'/login'} onClick={handleLogout}>
-                    Logout
-                  </Link>
-                </li>}
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <div className="wrapper">
-
-          <Routes>
-            <Route exact path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route element={<PrivateRoutes />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-            </Route>
-          </Routes>
+    <>
+      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, isAdmin, setIsAdmin }}>
+        <div className="App" >
+          <Router>
+          <Navbar />
+              <div className="wrapper">
+                <Routes>
+                  <Route exact path="/" element={<Login />} />
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/sign-up" element={<SignUp />} />
+                  <Route element={<PrivateRoutes />}>
+                    <Route exact path="/dashboard" element={<Dashboard />} />
+                    <Route exact path="/my-portfolios" element={<Portfolio />} />
+                    <Route exact path="/requests" element={<RequestManage />} />
+                    <Route exact path="/users" element={<UserManage />} />
+                    <Route exact path="/payment-history" element={<PaymentHistory />} />
+                    <Route exact path="/feedback" element={<Feedback />} />
+                    <Route exact path="/users/:id" element={<EditUser />} />
+                    <Route exact path="/my-portfolio" element={<Portfolio />} />
+                  </Route>
+                </Routes>
+              </div>
+          </Router>
         </div>
-      </div>
-      <div>
-      </div>
-    </Router></>
+      </AuthContext.Provider>
+    </>
   )
 }
 export default App
