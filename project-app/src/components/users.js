@@ -6,7 +6,7 @@ const Users = () => {
     const [users, setUsers] = useState([])
     const userId = localStorage.getItem('userId');
     React.useEffect(() => {
-        fetch('http://localhost:4000/api/getUsers', {
+        fetch('https://first-react-app-server.onrender.com/api/getUsers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId })
@@ -21,7 +21,7 @@ const Users = () => {
     }, []);
     const deleteUser = (userId) => {
         return () => {
-            fetch('http://localhost:4000/api/deleteUser', {
+            fetch('https://first-react-app-server.onrender.com/api/deleteUser', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId })
@@ -60,7 +60,7 @@ const Users = () => {
                                 <td>{user.firstName} {user.lastName}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    {user.photo ? <img src={'http://localhost:4000/photo/' + user.photo} alt={user.firstName} style={{ width: '100px' }} /> : <img src={require('../assets/user.png')} alt={user.firstName} style={{ width: '50px' }} />}
+                                    {user.photo ? <img src={'https://first-react-app-server.onrender.com/photo/' + user.photo} alt={user.firstName} style={{ width: '100px' }} /> : <img src={require('../assets/user.png')} alt={user.firstName} style={{ width: '50px' }} />}
                                 </td>
                                 <td><Link className="btn btn-primary" to={`/users/${user._id}`}> Edit</Link></td>
                                 <td><button className="btn btn-danger" onClick={deleteUser(user._id)} >Delete</button></td>

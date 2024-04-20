@@ -11,7 +11,7 @@ const Payments = () => {
     // We will show the date, amount, and the status of the payment
     // now fetch the payments from the backend
     React.useEffect(() => {
-        fetch('http://localhost:4000/api/getPayments', {
+        fetch('https://first-react-app-server.onrender.com/api/getPayments', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId })

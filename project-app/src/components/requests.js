@@ -10,7 +10,7 @@ const Requests = () => {
   const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
   React.useEffect(() => {
-    fetch('http://localhost:4000/api/getUsers', {
+    fetch('https://first-react-app-server.onrender.com/api/getUsers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId })
@@ -25,7 +25,7 @@ const Requests = () => {
   }, []);
   const requestPayment = (userId) => {
     return () => {
-      fetch('http://localhost:4000/api/requestPayment', {
+      fetch('https://first-react-app-server.onrender.com/api/requestPayment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId })
@@ -35,7 +35,7 @@ const Requests = () => {
           if (data.status == 'success') {
             toast.success('Payment requested successfully');
             // refresh the users list
-            fetch('http://localhost:4000/api/getUsers', {
+            fetch('https://first-react-app-server.onrender.com/api/getUsers', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ userId })
@@ -60,7 +60,7 @@ const Requests = () => {
 
   const deleteUser = (userId) => {
     return () => {
-      fetch('http://localhost:4000/api/deleteUser', {
+      fetch('https://first-react-app-server.onrender.com/api/deleteUser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId })

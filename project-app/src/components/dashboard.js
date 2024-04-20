@@ -17,7 +17,7 @@ export default function Dashboard() {
     React.useEffect(() => {
         const userId = localStorage.getItem('userId');
         if (userId) {
-            fetch('http://localhost:4000/api/getUserByUserId', {
+            fetch('https://first-react-app-server.onrender.com/api/getUserByUserId', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId })
@@ -33,7 +33,7 @@ export default function Dashboard() {
         }
     }, []);
     const makePayment = () => {
-        fetch('http://localhost:4000/api/makePayment', {
+        fetch('https://first-react-app-server.onrender.com/api/makePayment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: user._id, amount, account, userName: user.firstName})
@@ -48,7 +48,7 @@ export default function Dashboard() {
             .catch(err => console.error(err));
     }
     const sendRequestToAdmin = () => {
-        fetch('http://localhost:4000/api/sendRequestToAdmin', {
+        fetch('https://first-react-app-server.onrender.com/api/sendRequestToAdmin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: user._id })

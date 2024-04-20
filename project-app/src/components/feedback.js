@@ -12,7 +12,7 @@ const Feedback = () => {
     if (isAdmin) {
       console.log('fetching feedbacks');
       const fetchFeedbacks = async () => {
-        fetch('http://localhost:4000/api/getFeedbacks', {
+        fetch('https://first-react-app-server.onrender.com/api/getFeedbacks', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId })
@@ -33,7 +33,7 @@ const Feedback = () => {
   const sendFeedback = () => {
     //send feedback to the backend
     //show a success message
-    fetch('http://localhost:4000/api/sendFeedback', {
+    fetch('https://first-react-app-server.onrender.com/api/sendFeedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, feedback: feedback })

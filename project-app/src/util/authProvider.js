@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     React.useEffect(() => {
         const userId = localStorage.getItem('userId');
         if (userId) {
-            fetch('http://localhost:4000/api/getUserByUserId', {
+            fetch('https://first-react-app-server.onrender.com/api/getUserByUserId', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId })
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
 const verifyToken = async (token, userId) => {
     console.log('api called');
     if (token) {
-        fetch('http://localhost:4000/api/verifyToken', {
+        fetch('https://first-react-app-server.onrender.com/api/verifyToken', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token, userId })

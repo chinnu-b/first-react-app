@@ -11,7 +11,7 @@ function EditUser() {
     const [fileDetails, setFileDetails] = React.useState({});
     // get the user details from the server
     React.useEffect(() => {
-        fetch('http://localhost:4000/api/getUserByUserId', {
+        fetch('https://first-react-app-server.onrender.com/api/getUserByUserId', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId })
@@ -39,7 +39,7 @@ function EditUser() {
         // upload the file to the server
         const formData = new FormData();
         formData.append('file', file);
-        fetch('http://localhost:4000/api/uploadFile', {
+        fetch('https://first-react-app-server.onrender.com/api/uploadFile', {
             method: 'POST',
             body: formData
         })
@@ -62,7 +62,7 @@ function EditUser() {
         const hobbies = document.getElementById('hobbies').value;
         const achievements = document.getElementById('achievements').value;
         const photo = fileDetails.originalname || fileDetails.filename;
-        fetch('http://localhost:4000/api/editUser', {
+        fetch('https://first-react-app-server.onrender.com/api/editUser', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId, firstName, lastName, skills, works, quotes, hobbies, achievements, photo })
