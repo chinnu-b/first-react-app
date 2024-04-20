@@ -1,0 +1,24 @@
+{
+  "name": "first-react-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd project-server && npm install",
+    "start-server": "cd project-server && node app.js",
+    "install-client": "cd project-app && npm install",
+    "build-client": "cd project-app && npm run build",
+    "start-client": "cd project-app && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chinnu-b/first-react-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chinnu-b/first-react-app/issues"
+  },
+  "homepage": "https://github.com/chinnu-b/first-react-app#readme"
+}
