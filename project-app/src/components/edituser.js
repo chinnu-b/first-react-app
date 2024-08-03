@@ -11,7 +11,7 @@ function EditUser() {
     const [fileDetails, setFileDetails] = React.useState({});
     // get the user details from the server
     React.useEffect(() => {
-        fetch('https://fyl-service.vercel.app//api/getUserByUserId', {
+        fetch('https://fyl-service.vercel.app/api/getUserByUserId', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId })
@@ -39,7 +39,7 @@ function EditUser() {
         // upload the file to the server
         const formData = new FormData();
         formData.append('file', file);
-        fetch('https://fyl-service.vercel.app//api/uploadFile', {
+        fetch('https://fyl-service.vercel.app/api/uploadFile', {
             method: 'POST',
             body: formData
         })
@@ -62,7 +62,7 @@ function EditUser() {
         const hobbies = document.getElementById('hobbies').value;
         const achievements = document.getElementById('achievements').value;
         const photo = fileDetails.originalname || fileDetails.filename;
-        fetch('https://fyl-service.vercel.app//api/editUser', {
+        fetch('https://fyl-service.vercel.app/api/editUser', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId, firstName, lastName, skills, works, quotes, hobbies, achievements, photo })

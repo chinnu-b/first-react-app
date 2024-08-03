@@ -11,7 +11,7 @@ const Payments = () => {
     // We will show the date, amount, and the status of the payment
     // now fetch the payments from the backend
     React.useEffect(() => {
-        fetch('https://fyl-service.vercel.app//api/getPayments', {
+        fetch('https://fyl-service.vercel.app/api/getPayments', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId })

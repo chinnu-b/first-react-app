@@ -6,7 +6,7 @@ const Users = () => {
     const [users, setUsers] = useState([])
     const userId = localStorage.getItem('userId');
     React.useEffect(() => {
-        fetch('https://fyl-service.vercel.app//api/getUsers', {
+        fetch('https://fyl-service.vercel.app/api/getUsers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId })
@@ -21,7 +21,7 @@ const Users = () => {
     }, []);
     const deleteUser = (userId) => {
         return () => {
-            fetch('https://fyl-service.vercel.app//api/deleteUser', {
+            fetch('https://fyl-service.vercel.app/api/deleteUser', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId })
@@ -60,7 +60,7 @@ const Users = () => {
                                 <td>{user.firstName} {user.lastName}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    {user.photo ? <img src={'https://fyl-service.vercel.app//photo/' + user.photo} alt={user.firstName} style={{ width: '100px' }} /> : <img src={require('../assets/user.png')} alt={user.firstName} style={{ width: '50px' }} />}
+                                    {user.photo ? <img src={'https://fyl-service.vercel.app/photo/' + user.photo} alt={user.firstName} style={{ width: '100px' }} /> : <img src={require('../assets/user.png')} alt={user.firstName} style={{ width: '50px' }} />}
                                 </td>
                                 <td><Link className="btn btn-primary" to={`/users/${user._id}`}> Edit</Link></td>
                                 <td><button className="btn btn-danger" onClick={deleteUser(user._id)} >Delete</button></td>

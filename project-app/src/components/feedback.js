@@ -12,7 +12,7 @@ const Feedback = () => {
     if (isAdmin) {
       console.log('fetching feedbacks');
       const fetchFeedbacks = async () => {
-        fetch('https://fyl-service.vercel.app//api/getFeedbacks', {
+        fetch('https://fyl-service.vercel.app/api/getFeedbacks', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId })
@@ -33,7 +33,7 @@ const Feedback = () => {
   const sendFeedback = () => {
     //send feedback to the backend
     //show a success message
-    fetch('https://fyl-service.vercel.app//api/sendFeedback', {
+    fetch('https://fyl-service.vercel.app/api/sendFeedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, feedback: feedback })

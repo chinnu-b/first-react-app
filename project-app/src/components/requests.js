@@ -10,7 +10,7 @@ const Requests = () => {
   const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
   React.useEffect(() => {
-    fetch('https://fyl-service.vercel.app//api/getUsers', {
+    fetch('https://fyl-service.vercel.app/api/getUsers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId })
@@ -25,7 +25,7 @@ const Requests = () => {
   }, []);
   const requestPayment = (userId) => {
     return () => {
-      fetch('https://fyl-service.vercel.app//api/requestPayment', {
+      fetch('https://fyl-service.vercel.app/api/requestPayment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId })
@@ -35,7 +35,7 @@ const Requests = () => {
           if (data.status == 'success') {
             toast.success('Payment requested successfully');
             // refresh the users list
-            fetch('https://fyl-service.vercel.app//api/getUsers', {
+            fetch('https://fyl-service.vercel.app/api/getUsers', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ userId })
@@ -60,7 +60,7 @@ const Requests = () => {
 
   const deleteUser = (userId) => {
     return () => {
-      fetch('https://fyl-service.vercel.app//api/deleteUser', {
+      fetch('https://fyl-service.vercel.app/api/deleteUser', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId })
