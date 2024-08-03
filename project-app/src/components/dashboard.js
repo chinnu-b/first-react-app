@@ -17,7 +17,7 @@ export default function Dashboard() {
     React.useEffect(() => {
         const userId = localStorage.getItem('userId');
         if (userId) {
-            fetch('https://first-react-app-server.onrender.com/api/getUserByUserId', {
+            fetch('https://fyl-service.vercel.app//api/getUserByUserId', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId })
@@ -33,7 +33,7 @@ export default function Dashboard() {
         }
     }, []);
     const makePayment = () => {
-        fetch('https://first-react-app-server.onrender.com/api/makePayment', {
+        fetch('https://fyl-service.vercel.app//api/makePayment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: user._id, amount, account, userName: user.firstName})
@@ -48,7 +48,7 @@ export default function Dashboard() {
             .catch(err => console.error(err));
     }
     const sendRequestToAdmin = () => {
-        fetch('https://first-react-app-server.onrender.com/api/sendRequestToAdmin', {
+        fetch('https://fyl-service.vercel.app//api/sendRequestToAdmin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: user._id })

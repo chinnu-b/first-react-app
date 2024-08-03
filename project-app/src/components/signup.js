@@ -22,7 +22,7 @@ export default class SignUp extends Component {
 
         event.preventDefault();
         try {
-            const response = await fetch('https://first-react-app-server.onrender.com/api/signup', {
+            const response = await fetch('https://fyl-service.vercel.app//api/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, firstName, lastName })

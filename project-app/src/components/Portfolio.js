@@ -13,7 +13,7 @@ const Portfolio = () => {
   const userId = localStorage.getItem('userId');
   const [user, setUser] = React.useState({});
   React.useEffect(() => {
-    fetch('https://first-react-app-server.onrender.com/api/getUserByUserId', {
+    fetch('https://fyl-service.vercel.app//api/getUserByUserId', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId })
@@ -31,7 +31,7 @@ const Portfolio = () => {
     <div className='dashboard'>
       <h3>Portfolio</h3>
       <div className="card w-75 m-auto p-2">
-        {user.photo ? <img src={'https://first-react-app-server.onrender.com/photo/' + user.photo} className="card-img-top" alt="..." style={{ width: '200px', height: '200px', borderRadius: '50%' }}/>
+        {user.photo ? <img src={'https://fyl-service.vercel.app//photo/' + user.photo} className="card-img-top" alt="..." style={{ width: '200px', height: '200px', borderRadius: '50%' }}/>
         : <img src={require('../assets/user.png')} className="card-img-top" alt="..." style={{ width: '200px', height: '200px', borderRadius: '50%' }}/>}
         <div className="card-body">
           <h5 className="card-title">{user.firstName} {user.lastName}</h5>
